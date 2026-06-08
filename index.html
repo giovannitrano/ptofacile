@@ -210,21 +210,23 @@
     text-transform: uppercase;
   }
 
-  select option[data-badge="new"]::after { content: " ●"; }
-
-  .preview-blocked {
-    display: none;
-    align-items: center;
-    gap: 12px;
-    padding: 1.25rem 1rem;
-    background: #FAEEDA;
-    color: #633806;
-    font-size: 0.78rem;
-    line-height: 1.5;
+  .down-badge {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-style: normal;
+    background: #FAE0DA;
+    color: #7A1E08;
+    border: 1px solid #F0A090;
+    padding: 1px 6px;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 4px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
-  .preview-blocked svg { flex-shrink: 0; color: #854F0B; }
-  .preview-blocked strong { display: block; color: #412402; margin-bottom: 2px; }
+
+
 
   footer {
     position: fixed;
@@ -234,6 +236,21 @@
     font-style: italic;
     color: var(--ink3);
     font-family: var(--mono);
+  }
+
+  .number-row {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .number-row input[type="text"] {
+    flex: 1;
+  }
+
+  .year-select {
+    width: 90px;
+    flex-shrink: 0;
   }
 
   @media (max-width: 480px) {
@@ -246,26 +263,28 @@
 
 <header>
   <div class="logo">PTO <span>Facile</span></div>
-  <div class="subtitle">Trademark Registry Quick Access</div>
-  <img id="cat-gif" src="https://media.tenor.com/nHBgEK6zEQMAAAAi/cat-gray.gif" alt="" width="80" style="margin-top:1rem;border-radius:50%;opacity:0.85;">
+  <div class="subtitle">Trademark Register Quick Access</div>
+  <img id="cat-gif" src="https://cdn.bio.link/uploads/thumbnails/2025-02-10/5YzFDAFgAVdfj1SXcatpet.gif" alt="" width="130" height="130" style="margin-top:1rem;border-radius:50%;opacity:0.9;object-fit:cover;">
 </header>
 
 <div class="card">
   <div class="field-group">
     <div>
-      <label for="country-select">Registry</label>
+      <label for="country-select">Register</label>
       <select id="country-select">
         <option value="">— Select a country —</option>
-        <option value="ALBA" data-format="AL/T/2022/000166 (6-digit last part)" data-badge="test">🇦🇱 ALBA — Albania</option>
+        <option value="ALBA" data-format="AL/T/2022/000166" data-badge="new">🇦🇱 ALBA — Albania  ·  NEW</option>
         <option value="AUST" data-format="2196220">🇦🇺 AUST — Australia</option>
         <option value="BENE" data-format="1457447">🇪🇺 BENE — Benelux</option>
         <option value="BRAZ" data-format="920048943">🇧🇷 BRAZ — Brazil</option>
-        <option value="BRUN" data-format="052193" data-badge="test">🇧🇳 BRUN — Brunei</option>
+        <option value="BRAZ_WIPO" data-format="943457530" data-badge="new">🇧🇷 BRAZ (WIPO) — Brazil via WIPO BrandDB  ·  NEW</option>
+        <option value="BRUN" data-format="052193" data-badge="down">🇧🇳 BRUN — Brunei  ·  DOWN</option>
         <option value="BULG" data-format="2022165778N">🇧🇬 BULG — Bulgaria</option>
-        <option value="CAMB" data-format="91008">🇰🇭 CAMB — Cambodia</option>
+        <option value="CAMB_WIPO" data-format="121535" data-badge="new">🇰🇭 CAMB (WIPO) — Cambodia via WIPO BrandDB  ·  NEW</option>
+        <option value="CAMB_ASEAN" data-format="103058" data-badge="new">🇰🇭 CAMB (ASEAN) — Cambodia via ASEAN IP  ·  NEW</option>
         <option value="CANA" data-format="2195857">🇨🇦 CANA — Canada</option>
         <option value="COLO" data-format="SD2022/0037408">🇨🇴 COLO — Colombia</option>
-        <option value="CORI" data-format="2023-000967">🇨🇷 CORI — Costa Rica</option>
+        <option value="CORI" data-format="26004047 (YYNNNNNN → e.g. 26004047)">🇨🇷 CORI — Costa Rica</option>
         <option value="CROA" data-format="Z20210281 or Z20210281A (code 210)">🇭🇷 CROA — Croatia</option>
         <option value="CTM" data-format="018449636">🇪🇺 CTM — EU (EUIPO)</option>
         <option value="CUBA" data-format="22000447">🇨🇺 CUBA — Cuba</option>
@@ -294,8 +313,8 @@
         <option value="MOLD" data-format="049489">🇲🇩 MOLD — Moldova</option>
         <option value="MONA" data-format="22.00152 (number format on pub)">🇲🇨 MONA — Monaco</option>
         <option value="MONE" data-format="2020-329 (code 210)">🇲🇪 MONE — Montenegro</option>
-        <option value="MORO" data-format="250708" data-badge="new">🇲🇦 MORO — Morocco</option>
-        <option value="MYAN" data-format="MMT2020009006" data-badge="new">🇲🇲 MYAN — Myanmar (ASEAN)</option>
+        <option value="MORO" data-format="250708">🇲🇦 MORO — Morocco</option>
+        <option value="MYAN" data-format="MMT2020009006">🇲🇲 MYAN — Myanmar (ASEAN)</option>
         <option value="NORW" data-format="1220998 or 202207184">🇳🇴 NORW — Norway</option>
         <option value="OSTE" data-format="21035/2022">🇦🇹 OSTE — Austria</option>
         <option value="PHIL" data-format="22513136">🇵🇭 PHIL — Philippines</option>
@@ -303,7 +322,7 @@
         <option value="PORT" data-format="561822">🇵🇹 PORT — Portugal</option>
         <option value="ROMA" data-format="M 2015 04541">🇷🇴 ROMA — Romania</option>
         <option value="RUSS" data-format="2018705302">🇷🇺 RUSS — Russia</option>
-        <option value="SEPE" data-format="2022-03902">🇸🇪 SEPE — Sweden (PRV)</option>
+        <option value="SEPE" data-format="2022-03902">🇸🇪 SEPE — Sweden</option>
         <option value="SERB" data-format="2200135 (delete one 0 from comcode 0011)">🇷🇸 SERB — Serbia</option>
         <option value="SKOR" data-format="4020210072120">🇰🇷 SKOR — South Korea</option>
         <option value="SLRE" data-format="1007-2009">🇸🇰 SLRE — Slovakia</option>
@@ -323,7 +342,18 @@
 
     <div id="number-field" style="display:none">
       <label for="tm-number">Application / Registration number</label>
-      <input type="text" id="tm-number" placeholder="Enter number…" autocomplete="off" spellcheck="false">
+      <div class="number-row">
+        <input type="text" id="tm-number" placeholder="Enter number…" autocomplete="off" spellcheck="false">
+        <select id="year-select" class="year-select" style="display:none">
+          <option value="2026" selected>2026</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+        </select>
+      </div>
       <div class="format-hint" id="format-hint"></div>
     </div>
   </div>
@@ -335,27 +365,59 @@
 
 <p class="note">
   Results open in a new tab. Enter key also triggers search.<br>
-  <span style="margin-top:4px;display:inline-block">
-    <span class="new-badge">new</span> = recently added &nbsp;·&nbsp; <span class="test-badge">test</span> = link under testing
+  <span style="margin-top:6px;display:inline-block;line-height:2">
+    <span class="new-badge">new</span> = recently added &nbsp;·&nbsp;
+    <span class="test-badge">test</span> = link under testing &nbsp;·&nbsp;
+    <span class="down-badge">down</span> = not working<br><br>
+    Register missing or want to check other cool tools? Check <a href="https://bio.link/tmkit" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:underline;font-style:normal;">TM_Kit</a>
   </span>
 </p>
 
 <footer>
-  <em>Poorly developed by Giovanni Trano</em>
+  <em>Poorly "developed" by Giovanni Trano</em>
 </footer>
 
 <script>
 const REGISTRIES = {
-  ALBA: v => `http://regjistriobjektevepi.dppi.gov.al/wopublish-search/public/trademarks?lang=en&query=${v}`,
+  // ALBA: direct substitution
+  ALBA: v => `https://regjistriobjektevepi.dppi.gov.al/Marka/MarkaDetails?MarkId_MARK=${encodeURIComponent(v)}`,
   AUST: v => `https://search.ipaustralia.gov.au/trademarks/search/view/${v}`,
   BENE: v => `https://www.boip.int/en/trademarks-register?app=%2Fitem%2Fbx${v}`,
+  // BRAZ original
   BRAZ: v => `https://busca.inpi.gov.br/pePI/servlet/MarcasServletController?Action=searchMarca&tipoPesquisa=BY_NUM_PROC&Source=OAMI&NumPedido=${v}`,
+  // BRAZ via WIPO BrandDB: user enters plain number, prefix BR500000
+  BRAZ_WIPO: v => `https://branddb.wipo.int/en/similarname/brand/BR500000${v}`,
   BRUN: v => `http://ipsearch.bruipo.gov.bn/app/public/detail/trademarks;jsessionid=8A0544B102DD894297EE4ECB34DB9F01?id=BN${v}`,
-  BULG: v => `https://portal.bpo.bg/en/rd?key=${v}`,
-  CAMB: v => `https://www.tmdn.org/tmview/#/tmview/results?page=1&pageSize=30&criteria=C&offices=KH&territories=KH&registrationNumber=${v}`,
-  CANA: v => `https://www.ic.gc.ca/app/opic-cipo/trdmrks/srch/viewTrademark.html?id=${v}&lang=eng&status=&appKey=${v}-00&startingDocumentIndexOnPage=1`,
-  COLO: v => `http://visordocs.sic.gov.co:8080/consultaDocs/markViewer.jsf?application=${v}`,
-  CORI: v => `https://www.tmdn.org/tmview/#/tmview/results?page=1&pageSize=30&criteria=C&applicationNumber=${v}&offices=CR&territories=CR`,
+  // BULG: input e.g. 2022165778N → BG_N_2022_165778
+  // Format: YYYY + digits + LETTER at end → BG_LETTER_YYYY_digits
+  BULG: v => {
+    const m = v.match(/^(\d{4})(\d+)([A-Z])$/i);
+    if (m) return `https://portal.bpo.bg/bpo-registers/marks/view/BG_${m[3].toUpperCase()}_${m[1]}_${m[2]}`;
+    return `https://portal.bpo.bg/bpo-registers/marks/view/${v}`;
+  },
+  // CAMB via ASEAN IP: user enters number e.g. 103058, replaces RENB value in encoded JSON
+  CAMB_ASEAN: v => {
+    const encoded = encodeURIComponent(JSON.stringify({
+      boolean: "AND",
+      bricks: [
+        {_id:"d7d4", key:"OFCO", strategy:"Simple", value:"KH"},
+        {_id:"d7db", key:"RENB", value: v}
+      ]
+    }));
+    return `https://ip-register.aseanip.org/en/trademarks/results?sort=score%20desc&rows=60&asStructure=${encoded}&fg=_void_`;
+  },
+  CANA: v => `https://ised-isde.canada.ca/cipo/trademark-search/${v}`,
+  COLO: v => `http://esearch.sic.gov.co/Visor/Marcas?application=${encodeURIComponent(v)}`,
+  // CORI: user enters YYNNNNNN e.g. 26004047 → 20YY-NNNNNN e.g. 2026-004047
+  CORI: v => {
+    const clean = v.replace(/\D/g,'');
+    if (clean.length === 8) {
+      const yy = clean.slice(0,2);
+      const rest = clean.slice(2);
+      return `https://rpi.rnp.go.cr/wopublish-search/public/detail/trademarks?id=20${yy}-${rest}`;
+    }
+    return `https://rpi.rnp.go.cr/wopublish-search/public/detail/trademarks?id=${v}`;
+  },
   CROA: v => `http://it-app.dziv.hr/Pretrage/en/z/Detaljno.aspx/${v}`,
   CTM: v => `https://euipo.europa.eu/eSearch/#details/trademarks/${v}`,
   CUBA: v => `https://wiposearch.ocpi.cu/wopublish-search/public/detail/trademarks?id=CUM20${v}`,
@@ -410,8 +472,12 @@ const REGISTRIES = {
   ZAMB: v => `https://tmdn.org/tmview/#/tmview/detail/ZM5000T20${v}`,
 };
 
+// Registries that are marked as "down" — search button disabled
+const DOWN_REGISTRIES = new Set(['BRUN']);
+
 const sel = document.getElementById('country-select');
 const tmInput = document.getElementById('tm-number');
+const yearSelect = document.getElementById('year-select');
 const formatHint = document.getElementById('format-hint');
 const numberField = document.getElementById('number-field');
 const btnSearch = document.getElementById('btn-search');
@@ -422,7 +488,15 @@ let currentUrl = '';
 function getUrl() {
   const code = sel.value;
   const val = tmInput.value.trim();
-  if (!code || !val || !REGISTRIES[code]) return '';
+  if (!code || !val) return '';
+  if (DOWN_REGISTRIES.has(code)) return '';
+  if (code === 'CAMB_WIPO') {
+    const year = yearSelect.value;
+    const yy = year.slice(2);
+    const padded = val.replace(/\D/g,'').padStart(6,'0');
+    return `https://branddb.wipo.int/en/brand/KH50${year}0${padded}${yy}`;
+  }
+  if (!REGISTRIES[code]) return '';
   return REGISTRIES[code](val);
 }
 
@@ -432,9 +506,23 @@ function updateState() {
     numberField.style.display = 'block';
     const opt = sel.options[sel.selectedIndex];
     const fmt = opt.dataset.format || '';
-    formatHint.innerHTML = fmt ? `Format: <strong>${fmt}</strong>` : '';
+    const badge = opt.dataset.badge || '';
+    const isDown = badge === 'down';
+
+    // Show/hide year dropdown
+    yearSelect.style.display = code === 'CAMB_WIPO' ? '' : 'none';
+
+    let hint = fmt ? `Format: <strong>${fmt}</strong>` : '';
+    if (code === 'CAMB_WIPO') hint += ` &nbsp;— select year on the right`;
+    if (isDown) hint = `<span class="down-badge">down</span> This register is currently not working.`;
+    formatHint.innerHTML = hint;
+
+    tmInput.disabled = isDown;
+    btnSearch.disabled = true;
+    if (isDown) return;
   } else {
     numberField.style.display = 'none';
+    yearSelect.style.display = 'none';
     formatHint.innerHTML = '';
   }
   currentUrl = getUrl();
@@ -443,11 +531,14 @@ function updateState() {
 
 sel.addEventListener('change', () => {
   tmInput.value = '';
+  yearSelect.value = '2026';
   updateState();
-  tmInput.focus();
+  const opt = sel.options[sel.selectedIndex];
+  if (opt && opt.dataset.badge !== 'down') tmInput.focus();
 });
 
 tmInput.addEventListener('input', updateState);
+yearSelect.addEventListener('change', updateState);
 
 tmInput.addEventListener('keydown', e => {
   if (e.key === 'Enter' && !btnSearch.disabled) btnSearch.click();
@@ -455,7 +546,6 @@ tmInput.addEventListener('keydown', e => {
 
 btnSearch.addEventListener('click', () => {
   if (!currentUrl) return;
-  catGif.style.display = 'none';
   window.open(currentUrl, '_blank', 'noopener,noreferrer');
 });
 </script>
