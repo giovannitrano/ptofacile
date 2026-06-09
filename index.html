@@ -287,9 +287,9 @@
         <option value="CORI" data-format="26004047 (YYNNNNNN → e.g. 26004047)">🇨🇷 CORI — Costa Rica</option>
         <option value="CROA" data-format="Z20210281 or Z20210281A (code 210)">🇭🇷 CROA — Croatia</option>
         <option value="CTM" data-format="018449636">🇪🇺 CTM — EU (EUIPO)</option>
-        <option value="CUBA" data-format="22000447">🇨🇺 CUBA — Cuba</option>
+        <option value="CUBA" data-format="22000447" data-badge="down">🇨🇺 CUBA — Cuba  ·  DOWN</option>
         <option value="CYPR" data-format="92093">🇨🇾 CYPR — Cyprus</option>
-        <option value="CZRE" data-format="160920">🇨🇿 CZRE — Czech Republic</option>
+        <option value="CZRE" data-format="607098">🇨🇿 CZRE — Czech Republic</option>
         <option value="DENM" data-format="VA 2021 01784 (VA trademarks only)">🇩🇰 DENM — Denmark</option>
         <option value="ESTO" data-format="M202000121">🇪🇪 ESTO — Estonia</option>
         <option value="FINL" data-format="T202151419">🇫🇮 FINL — Finland</option>
@@ -330,7 +330,7 @@
         <option value="SPAI" data-format="4174368">🇪🇸 SPAI — Spain</option>
         <option value="SSCN" data-format="0442388">🇪🇸 SSCN — Spain (trade names)</option>
         <option value="SWPE" data-format="09170/2022 (comcode 1011)">🇨🇭 SWPE — Switzerland</option>
-        <option value="TAIL" data-format="240105174">🇹🇭 TAIL — Thailand</option>
+        <option value="TAIL" data-format="180125793">🇹🇭 TAIL — Thailand</option>
         <option value="TURK" data-format="2025-008386 (comcode 1011)">🇹🇷 TURK — Turkey</option>
         <option value="UKRA" data-format="m201109103">🇺🇦 UKRA — Ukraine</option>
         <option value="USA" data-format="97089507">🇺🇸 USA — United States</option>
@@ -423,7 +423,7 @@ const REGISTRIES = {
   CTM: v => `https://euipo.europa.eu/eSearch/#details/trademarks/${v}`,
   CUBA: v => `https://wiposearch.ocpi.cu/wopublish-search/public/detail/trademarks?id=CUM20${v}`,
   CYPR: v => `https://www.tmdn.org/tmview/#/tmview/results?page=1&pageSize=30&criteria=C&applicationNumber=${v}&offices=CY&territories=CY`,
-  CZRE: v => `https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/${v}&plang=EN`,
+  CZRE: v => `https://www.tmdn.org/tmview/#/tmview/detail/CZ500000000${v}`,
   DENM: v => `https://onlineweb.dkpto.dk/pvsonline/Varemaerke?action=109&sagID=${encodeURIComponent(v)}`,
   ESTO: v => `https://andmebaas.epa.ee/avalik/#/trademarks?nr=${v}&ln=en`,
   FINL: v => `https://tavaramerkkitietopalvelu.prh.fi/en/trademark/${v}`,
@@ -464,7 +464,16 @@ const REGISTRIES = {
   SPAI: v => `http://www.oepm.es/en/signos_distintivos/resultados_expediente.html?mod=M&exp=${v}`,
   SSCN: v => `http://www.oepm.es/en/signos_distintivos/resultados_expediente.html?mod=N&exp=${v}`,
   SWPE: v => `https://www.tmdn.org/tmview/#/tmview/results?page=1&pageSize=30&criteria=C&applicationNumber=${v}&offices=CH&territories=CH`,
-  TAIL: v => `https://asean-ipregister.wipo.net/wopublish-search/public/detail/trademarks?id=TH${v}`,
+  TAIL: v => {
+    const encoded = encodeURIComponent(JSON.stringify({
+      boolean: "AND",
+      bricks: [
+        {_id:"1089", key:"OFCO", strategy:"Simple", value:"TH"},
+        {_id:"108d", key:"AFNB_ORI", value: v}
+      ]
+    }));
+    return `https://ip-register.aseanip.org/en/trademarks/results?sort=score%20desc&rows=60&asStructure=${encoded}&fg=_void_`;
+  },
   TURK: v => `https://www.tmdn.org/tmview/#/tmview/results?page=1&pageSize=30&criteria=C&applicationNumber=${v}&offices=TR&territories=TR`,
   UKRA: v => `https://sis.ukrpatent.org/en/search/simple/?form-TOTAL_FORMS=1&form-INITIAL_FORMS=1&form-MAX_NUM_FORMS=&form-0-param_type=1&form-0-value=${v}`,
   USA: v => `https://tsdr.uspto.gov/#caseNumber=${v}&caseSearchType=US_APPLICATION&caseType=DEFAULT&searchType=statusSearch`,
@@ -474,7 +483,7 @@ const REGISTRIES = {
 };
 
 // Registries that are marked as "down" — search button disabled
-const DOWN_REGISTRIES = new Set(['BRUN']);
+const DOWN_REGISTRIES = new Set(['BRUN', 'CUBA']);
 
 const sel = document.getElementById('country-select');
 const tmInput = document.getElementById('tm-number');
